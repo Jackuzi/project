@@ -9,8 +9,7 @@
     <div>
         <br />
         <br />
-        <asp:TextBox ID="TextBox1" runat="server" Height="30px" Width="258px"></asp:TextBox>
-        <ajaxToolkit:TextBoxWatermarkExtender ID="TextBox1_TextBoxWatermarkExtender" runat="server" BehaviorID="TextBox1_TextBoxWatermarkExtender" TargetControlID="TextBox1" WatermarkText="Search" />
+        <asp:TextBox ID="TextBox1" runat="server" Height="30px" Width="258px" OnTextChanged="TextBox1_TextChanged" ></asp:TextBox>
         <br />
         <br />
         <asp:ListView ID="ListView1" runat="server" DataSourceID="LinqDataSource1">
@@ -125,6 +124,7 @@
         </ajaxToolkit:DropDownExtender>
         <ajaxToolkit:DropShadowExtender ID="ListView1_DropShadowExtender" runat="server" BehaviorID="ListView1_DropShadowExtender" TargetControlID="ListView1" Rounded="True" TrackPosition="True">
         </ajaxToolkit:DropShadowExtender>
+
 </div>
     <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="DataClassesDataContext" EntityTypeName="" OnSelecting="LinqDataSource1_Selecting" Select="new (Name, AuthorName, Type)" TableName="CdTables" OrderBy="Type"></asp:LinqDataSource>
 </asp:Content>
