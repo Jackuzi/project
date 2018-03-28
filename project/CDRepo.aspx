@@ -10,6 +10,7 @@
         <br />
         <br />
         <asp:TextBox ID="TextBox1" runat="server" Height="30px" Width="258px" OnTextChanged="TextBox1_TextChanged" ></asp:TextBox>
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
         <br />
         <br />
         <asp:ListView ID="ListView1" runat="server" DataSourceID="LinqDataSource1">
@@ -120,7 +121,7 @@
             </tr>
         </SelectedItemTemplate>
         </asp:ListView>
-        <ajaxToolkit:DropDownExtender ID="ListView1_DropDownExtender" runat="server" BehaviorID="ListView1_DropDownExtender" DynamicServicePath="" TargetControlID="ListView1">
+        <ajaxToolkit:DropDownExtender ID="ListView1_DropDownExtender" runat="server" BehaviorID="ListView1_DropDownExtender" TargetControlID="ListView1">
         </ajaxToolkit:DropDownExtender>
         <ajaxToolkit:DropShadowExtender ID="ListView1_DropShadowExtender" runat="server" BehaviorID="ListView1_DropShadowExtender" TargetControlID="ListView1" Rounded="True" TrackPosition="True">
         </ajaxToolkit:DropShadowExtender>
