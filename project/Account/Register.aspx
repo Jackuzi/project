@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="Register" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Register.aspx.cs" Inherits="Account_Register" %>
 
-<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="ajaxToolkit" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <h2><%: Title %>.</h2>
@@ -24,8 +24,7 @@
             <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-md-2 control-label">Password</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="Password" TextMode="Password" CssClass="form-control" />
-                <ajaxToolkit:PasswordStrength ID="Password_PasswordStrength" runat="server" BehaviorID="Password_PasswordStrength" TargetControlID="Password">
-                </ajaxToolkit:PasswordStrength>
+                <ajaxToolkit:PasswordStrength ID="Password_PasswordStrength" runat="server" BehaviorID="Password_PasswordStrength" TargetControlID="Password"></ajaxToolkit:PasswordStrength>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Password"
                     CssClass="text-danger" ErrorMessage="The password field is required." />
             </div>

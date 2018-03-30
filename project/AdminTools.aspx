@@ -1,84 +1,28 @@
-﻿<%@ Page Title="Admin Tools" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="AdminTools.aspx.cs" Inherits="Contact" %><%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="ajaxToolkit" %>
+﻿<%@ Page Title="Admin Tools" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="AdminTools.aspx.cs" Inherits="Contact" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2><%: Title %></h2>
-    <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" BorderStyle="None">
+    <p>Notes: Adding new user and then trying to delete or log off, causes antiXRF token failure. Need to restart the page. However, user database is updated successfuly.</p>
+<p>&nbsp;</p>
+    <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="2" BorderStyle="None" Width="803px" Height="841px">
         <ajaxToolkit:TabPanel runat="server" HeaderText="TabPanel1" ID="TabPanel1">
-            <HeaderTemplate>
-                Manage CD Collection
-            </HeaderTemplate>
-            <ContentTemplate>
-                 <asp:BulletedList ID="BulletedList3" runat="server" Width="300px" BulletStyle="Circle" Font-Bold="True" Font-Size="Larger">
-                    <asp:ListItem>Manage the database data</asp:ListItem>
-                </asp:BulletedList>          
-                 <br />
-                <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="DataClassesDataContext" EnableDelete="True" EnableInsert="True" EnableUpdate="True" EntityTypeName="" TableName="CdTables" ></asp:LinqDataSource>
-            <asp:GridView ID="GridView1" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="LinqDataSource1" ForeColor="Black" Width="550px">
-                <Columns>
-                    <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
-                    <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
-                    <asp:BoundField DataField="AuthorName" HeaderText="AuthorName" SortExpression="AuthorName" />
-                    <asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type" />
-                    <asp:BoundField DataField="DateAdded" DataFormatString="{0:d}" HeaderText="DateAdded" SortExpression="DateAdded" />
-                </Columns>
-                </asp:GridView>
-                <br />
-                <br />
-                <asp:BulletedList ID="BulletedList1" runat="server" Width="300px" BulletStyle="Circle" Font-Bold="True" Font-Size="Larger">
-                    <asp:ListItem>Add new CD to the database</asp:ListItem>
-                </asp:BulletedList>
-                
-                   <asp:FormView ID="FormView1" runat="server" DataSourceID="LinqDataSource1" Height="100px" Width="579px" >
-            
-                       <ItemTemplate>
-                           <asp:TextBox ID="nameBox" runat="server" ToolTip="Enter CD Title"></asp:TextBox>
-                             <ajaxToolkit:DropShadowExtender ID="nameBox_DropShadowExtender" runat="server" BehaviorID="nameBox_DropShadowExtender" TargetControlID="nameBox" />
-                             <ajaxToolkit:TextBoxWatermarkExtender ID="nameBox_TextBoxWatermarkExtender" runat="server" BehaviorID="nameBox_TextBoxWatermarkExtender" TargetControlID="nameBox" WatermarkText="Name" />
-                             <asp:TextBox ID="authorBox" runat="server"></asp:TextBox>
-                           <ajaxToolkit:DropShadowExtender ID="authorBox_DropShadowExtender" runat="server" BehaviorID="authorBox_DropShadowExtender" TargetControlID="authorBox" />
-                           <ajaxToolkit:TextBoxWatermarkExtender ID="authorBox_TextBoxWatermarkExtender" runat="server" BehaviorID="authorBox_TextBoxWatermarkExtender" TargetControlID="authorBox" WatermarkText="Author" />
-                           <asp:DropDownList ID="dropDownMovieList" runat="server" Width="111px">
-                                  <asp:ListItem value="value">Movie</asp:ListItem>
-                                  <asp:ListItem value="value">Music</asp:ListItem>
-                           </asp:DropDownList>
-                           <ajaxToolkit:DropShadowExtender ID="DropDownMovieList_DropShadowExtender" runat="server" BehaviorID="DropDownList1_DropShadowExtender" TargetControlID="DropDownMovieList" />
-                           <ajaxToolkit:DropDownExtender ID="DropDownMovieList_DropDownExtender" runat="server" BehaviorID="DropDownList1_DropDownExtender" DynamicServicePath="" TargetControlID="DropDownMovieList">
-                           </ajaxToolkit:DropDownExtender>
-                           <asp:Button ID="Button1" runat="server" Text="Add" Width="95px" OnClick="Button1_Click" />
-                           <ajaxToolkit:DropShadowExtender ID="Button1_DropShadowExtender" runat="server" BehaviorID="Button1_DropShadowExtender" TargetControlID="Button1" />
-                           <ajaxToolkit:AnimationExtender ID="Button1_AnimationExtender" runat="server" BehaviorID="Button1_AnimationExtender" TargetControlID="Button1">
-                           </ajaxToolkit:AnimationExtender>
-                           <ajaxToolkit:RoundedCornersExtender ID="Button1_RoundedCornersExtender" runat="server" BehaviorID="Button1_RoundedCornersExtender" TargetControlID="Button1" />
-                       </ItemTemplate>
-                      
-                </asp:FormView>
+            <HeaderTemplate>Manage CD Collection</HeaderTemplate>
 
 
-                 <br />
-                <asp:Panel ID="messagePanel" runat="server" Visible="False">
-                <div class="alert alert-success alert-dismissible fade in">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Success!</strong> Record added.
-  </div>
-</asp:Panel>
-                 <asp:Panel ID="PanelWarning" runat="server" Visible="False">
-                <div class="alert alert-danger alert-dismissible fade in">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Error!</strong> Record already exists in the database.
-  </div>
-</asp:Panel>
-            </ContentTemplate>
+            <ContentTemplate><asp:BulletedList ID="BulletedList3" runat="server" Width="300px" BulletStyle="Circle" Font-Bold="True" Font-Size="Larger"><asp:ListItem>Manage the database data</asp:ListItem></asp:BulletedList><br /><div class="btn-group"><asp:TextBox ID="TextBox1" runat="server" Height="18px" Width="191px"></asp:TextBox><ajaxToolkit:DropShadowExtender ID="TextBox1_DropShadowExtender" runat="server" BehaviorID="TextBox1_DropShadowExtender" TargetControlID="TextBox1" /><ajaxToolkit:TextBoxWatermarkExtender ID="TextBox1_TextBoxWatermarkExtender" runat="server" BehaviorID="TextBox1_TextBoxWatermarkExtender" TargetControlID="TextBox1" WatermarkText="Search Name" /><asp:Button ID="Button2" runat="server" type="button" Width="180px" Height="22px" OnClick="Button2_Click" Text="Search"  /><ajaxToolkit:DropShadowExtender ID="Button2_DropShadowExtender" runat="server" BehaviorID="Button2_DropShadowExtender" TargetControlID="Button2" /><ajaxToolkit:RoundedCornersExtender ID="Button2_RoundedCornersExtender" runat="server" BehaviorID="Button2_RoundedCornersExtender" TargetControlID="Button2" /></div><br /><br /><asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="DataClassesDataContext" EnableDelete="True" EnableInsert="True" EnableUpdate="True" EntityTypeName="" TableName="CdTables" OnSelecting="LinqDataSource1_Selecting"></asp:LinqDataSource><asp:GridView ID="GridView1" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="LinqDataSource1" ForeColor="Black" Width="550px"><Columns><asp:CommandField ShowDeleteButton="True" ShowEditButton="True" /><asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" /><asp:BoundField DataField="AuthorName" HeaderText="AuthorName" SortExpression="AuthorName" /><asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type" /><asp:BoundField DataField="DateAdded" DataFormatString="{0:d}" HeaderText="DateAdded" SortExpression="DateAdded" /></Columns></asp:GridView><br /><br /><asp:BulletedList ID="BulletedList1" runat="server" Width="300px" BulletStyle="Circle" Font-Bold="True" Font-Size="Larger"><asp:ListItem>Add new CD to the database</asp:ListItem></asp:BulletedList><asp:FormView ID="FormView1" runat="server" DataSourceID="LinqDataSource1" Height="149px" Width="681px"><ItemTemplate><asp:TextBox ID="nameBox" runat="server" ToolTip="Enter CD Title"></asp:TextBox><ajaxToolkit:DropShadowExtender ID="nameBox_DropShadowExtender" runat="server" BehaviorID="nameBox_DropShadowExtender" TargetControlID="nameBox" /><ajaxToolkit:TextBoxWatermarkExtender ID="nameBox_TextBoxWatermarkExtender" runat="server" BehaviorID="nameBox_TextBoxWatermarkExtender" TargetControlID="nameBox" WatermarkText="Name" /><asp:TextBox ID="authorBox" runat="server"></asp:TextBox><ajaxToolkit:DropShadowExtender ID="authorBox_DropShadowExtender" runat="server" BehaviorID="authorBox_DropShadowExtender" TargetControlID="authorBox" /><ajaxToolkit:TextBoxWatermarkExtender ID="authorBox_TextBoxWatermarkExtender" runat="server" BehaviorID="authorBox_TextBoxWatermarkExtender" TargetControlID="authorBox" WatermarkText="Author" /><asp:DropDownList ID="dropDownMovieList" runat="server" Width="111px"><asp:ListItem Value="value">Movie</asp:ListItem><asp:ListItem Value="value">Music</asp:ListItem></asp:DropDownList><ajaxToolkit:DropShadowExtender ID="DropDownMovieList_DropShadowExtender" runat="server" BehaviorID="DropDownList1_DropShadowExtender" TargetControlID="DropDownMovieList" /><ajaxToolkit:DropDownExtender ID="DropDownMovieList_DropDownExtender" runat="server" BehaviorID="DropDownList1_DropDownExtender" DynamicServicePath="" TargetControlID="DropDownMovieList"></ajaxToolkit:DropDownExtender><asp:Button ID="Button1" runat="server" Text="Add" Width="95px" OnClick="Button1_Click" class="btn btn-success btn btn-primary btn-sm" type="submit"/><ajaxToolkit:DropShadowExtender ID="Button1_DropShadowExtender" runat="server" BehaviorID="Button1_DropShadowExtender" TargetControlID="Button1" /><ajaxToolkit:AnimationExtender ID="Button1_AnimationExtender" runat="server" BehaviorID="Button1_AnimationExtender" TargetControlID="Button1"></ajaxToolkit:AnimationExtender><ajaxToolkit:RoundedCornersExtender ID="Button1_RoundedCornersExtender" runat="server" BehaviorID="Button1_RoundedCornersExtender" TargetControlID="Button1" /></ItemTemplate></asp:FormView><br /><asp:Panel ID="messagePanel" runat="server" Visible="False"><div class="alert alert-success alert-dismissible fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <strong>Success!</strong> Record added. </div></asp:Panel><asp:Panel ID="PanelWarning" runat="server" Visible="False"><div class="alert alert-danger alert-dismissible fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <strong>Error!</strong> Record already exists in the database. </div></asp:Panel></ContentTemplate>
         </ajaxToolkit:TabPanel>
         <ajaxToolkit:TabPanel runat="server" HeaderText="TabPanel2" ID="TabPanel2">
-                        <HeaderTemplate>
-                Add/Remove Users
-            </HeaderTemplate>
+            <HeaderTemplate>Remove Users</HeaderTemplate>
+            <ContentTemplate><asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" Height="147px" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" Width="444px"><Columns><asp:CommandField ShowDeleteButton="True" /><asp:BoundField DataField="Name" HeaderText="System Role" SortExpression="Name" /><asp:BoundField DataField="UserName" HeaderText="User Name" SortExpression="UserName" /><asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True" SortExpression="Id" Visible="False" /></Columns></asp:GridView><asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" DeleteCommand="DELETE FROM AspNetUsers WHERE (Id = @ID)" OnSelecting="SqlDataSource1_Selecting" SelectCommand="SELECT AspNetRoles.Name, AspNetUsers.UserName, AspNetUsers.Id FROM AspNetRoles INNER JOIN AspNetUserRoles ON AspNetRoles.Id = AspNetUserRoles.RoleId INNER JOIN AspNetUsers ON AspNetUserRoles.UserId = AspNetUsers.Id" UpdateCommand="UPDATE AspNetUserRoles SET RoleId = CASE WHEN (@NAME='ADMIN') THEN '1' ELSE '2' END WHERE (UserId = @ID)"><DeleteParameters><asp:Parameter Name="ID" /></DeleteParameters><UpdateParameters><asp:Parameter Name="NAME" /><asp:Parameter Name="ID" /></UpdateParameters></asp:SqlDataSource><br /><asp:Panel ID="messagePanel0" runat="server" Visible="False"><div class="alert alert-success alert-dismissible fade in"><a aria-label="close" class="close" data-dismiss="alert" href="#">×</a> <strong>Success!</strong> Record added. </div></asp:Panel></ContentTemplate>
         </ajaxToolkit:TabPanel>
         <ajaxToolkit:TabPanel ID="TabPanel3" runat="server" HeaderText="TabPanel3">
-                        <HeaderTemplate>
-                Blocked Users
-            </HeaderTemplate>
+            <HeaderTemplate>Add Administrator/User</HeaderTemplate>
+            <ContentTemplate><asp:TextBox ID="TextBox2" runat="server"></asp:TextBox><ajaxToolkit:TextBoxWatermarkExtender ID="TextBox2_TextBoxWatermarkExtender" runat="server" BehaviorID="TextBox2_TextBoxWatermarkExtender" TargetControlID="TextBox2" WatermarkText="Name" /><asp:TextBox ID="TextBox3" runat="server"></asp:TextBox><ajaxToolkit:TextBoxWatermarkExtender ID="TextBox3_TextBoxWatermarkExtender" runat="server" BehaviorID="TextBox3_TextBoxWatermarkExtender" TargetControlID="TextBox3" WatermarkText="Password" /><asp:DropDownList ID="DropDownList1" runat="server"><asp:ListItem Value="Admin">Administrator</asp:ListItem><asp:ListItem>User</asp:ListItem></asp:DropDownList><asp:Button ID="Button3" runat="server" OnClick="Button3_Click1" Text="Add" /><ajaxToolkit:DropShadowExtender ID="Button3_DropShadowExtender" runat="server" BehaviorID="Button3_DropShadowExtender" TargetControlID="Button3" /><ajaxToolkit:RoundedCornersExtender ID="Button3_RoundedCornersExtender" runat="server" BehaviorID="Button3_RoundedCornersExtender" TargetControlID="Button3" /><br /><br /><asp:Panel ID="Panel1" runat="server" Visible="False"><div class="alert alert-success alert-dismissible fade in"><a aria-label="close" class="close" data-dismiss="alert" href="#">×</a> <strong>Success!</strong> Record added. </div></asp:Panel></ContentTemplate>
         </ajaxToolkit:TabPanel>
-</ajaxToolkit:TabContainer>
+    </ajaxToolkit:TabContainer>
+
+    <ajaxToolkit:RoundedCornersExtender ID="TabContainer1_RoundedCornersExtender" runat="server" BehaviorID="TabContainer1_RoundedCornersExtender" TargetControlID="TabContainer1" />
 
 </asp:Content>

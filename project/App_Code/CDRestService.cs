@@ -9,24 +9,25 @@ using System.Text;
 
 public class CDRestService : ICDRestService
 {
-   
+
 
     public List<objData> GetData()
-        
+
     {
         // code works
-        List<objData> objDatas = new List<objData>();   
+        List<objData> objDatas = new List<objData>();
         DataClassesDataContext objDatabaseDataContext = new DataClassesDataContext();
         var records = (from data in objDatabaseDataContext.CdTables orderby data.Name, data.Type select data);
-        foreach(var record in records)
+        foreach (var record in records)
         {
-            objDatas.Add(new objData {
+            objDatas.Add(new objData
+            {
                 Id = record.Id.ToString(),
                 Name = record.Name.ToString(),
                 AuthorName = record.AuthorName.ToString(),
                 Type = record.Type.ToString(),
                 DateAdded = record.DateAdded.ToString(),
-                
+
             });
             // show results in console
             System.Diagnostics.Debug.WriteLine(record.Name);
@@ -37,7 +38,7 @@ public class CDRestService : ICDRestService
     public List<objData> GetSearchResults(String name)
     {
 
-       
+
         List<objData> objDatas = new List<objData>();
         DataClassesDataContext objDatabaseDataContext = new DataClassesDataContext();
         var records = (from data in objDatabaseDataContext.CdTables orderby data.Name, data.Type select data);
@@ -64,8 +65,8 @@ public class CDRestService : ICDRestService
                 System.Diagnostics.Debug.WriteLine(record.Name);
             }
         }
-        
-      
+
+
         return objDatas;
 
 
@@ -90,12 +91,12 @@ public class CDRestService : ICDRestService
         return strReturnValue.ToString();
     }
 }
-    public class objData
-    {
-        public String Id { get; set; }
-        public string Name { get; set; }
-        public string AuthorName { get; set; }
-        public string Type { get; set; }
-        public string DateAdded { get; set; }
-    
+public class objData
+{
+    public String Id { get; set; }
+    public string Name { get; set; }
+    public string AuthorName { get; set; }
+    public string Type { get; set; }
+    public string DateAdded { get; set; }
+
 }

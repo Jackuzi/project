@@ -18,7 +18,7 @@ public interface ICDRestService
     List<objData> GetData();
 
     [OperationContract]
-    [WebInvoke(Method ="GET",
+    [WebInvoke(Method = "GET",
               ResponseFormat = WebMessageFormat.Json,
               UriTemplate = "GetSearchResults/{name}")]
     List<objData> GetSearchResults(string name);

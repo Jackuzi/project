@@ -27,7 +27,7 @@
                         <div class="form-group">
                             <asp:Label runat="server" AssociatedControlID="password" CssClass="col-md-2 control-label">Password</asp:Label>
                             <div class="col-md-10">
-                                <asp:TextBox runat="server" ID="password" TextMode="Password"  CssClass="form-control"  />
+                                <asp:TextBox runat="server" ID="password" TextMode="Password" CssClass="form-control" />
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="password"
                                     CssClass="text-danger" ErrorMessage="The password field is required."
                                     Display="Dynamic" ValidationGroup="SetPassword" />
@@ -39,7 +39,7 @@
                         <div class="form-group">
                             <asp:Label runat="server" AssociatedControlID="confirmPassword" CssClass="col-md-2 control-label">Confirm password</asp:Label>
                             <div class="col-md-10">
-                                <asp:TextBox runat="server" ID="confirmPassword" TextMode="Password"  CssClass="form-control"  />
+                                <asp:TextBox runat="server" ID="confirmPassword" TextMode="Password" CssClass="form-control" />
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="confirmPassword"
                                     CssClass="text-danger" Display="Dynamic" ErrorMessage="The confirm password field is required."
                                     ValidationGroup="SetPassword" />
@@ -128,7 +128,7 @@
                     </ItemTemplate>
                 </asp:ListView>
 
-                <uc:openauthproviders runat="server" returnurl="~/Account/Manage" />
+                <uc:OpenAuthProviders runat="server" ReturnUrl="~/Account/Manage" />
             </section>
 
         </div>

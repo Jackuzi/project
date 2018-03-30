@@ -18,6 +18,7 @@ public partial class SiteMaster : MasterPage
 
     protected void Page_Init(object sender, EventArgs e)
     {
+        
         // The code below helps to protect against XSRF attacks
         var requestCookie = Request.Cookies[AntiXsrfTokenKey];
         Guid requestCookieGuidValue;
@@ -44,7 +45,7 @@ public partial class SiteMaster : MasterPage
             }
             Response.Cookies.Set(responseCookie);
         }
-        
+
         Page.PreLoad += master_Page_PreLoad;
     }
 
@@ -70,7 +71,7 @@ public partial class SiteMaster : MasterPage
 
     protected void ManageAccess(object sender, EventArgs e)
     {
-  
+
     }
 
     protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)

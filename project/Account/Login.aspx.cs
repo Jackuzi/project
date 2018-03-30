@@ -8,46 +8,46 @@ using System.Web.UI.WebControls;
 
 public partial class Account_Login : Page
 {
-        protected void Page_Load(object sender, EventArgs e)
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        RegisterHyperLink.NavigateUrl = "Register";
+        OpenAuthLogin.ReturnUrl = Request.QueryString["ReturnUrl"];
+        var returnUrl = HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
+        if (!String.IsNullOrEmpty(returnUrl))
         {
-            RegisterHyperLink.NavigateUrl = "Register";
-            OpenAuthLogin.ReturnUrl = Request.QueryString["ReturnUrl"];
-            var returnUrl = HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
-            if (!String.IsNullOrEmpty(returnUrl))
-            {
-                RegisterHyperLink.NavigateUrl += "?ReturnUrl=" + returnUrl;
-            }
+            RegisterHyperLink.NavigateUrl += "?ReturnUrl=" + returnUrl;
         }
+    }
 
-        protected void LogIn(object sender, EventArgs e)
+    protected void LogIn(object sender, EventArgs e)
+    {
+        if (IsValid)
         {
-            if (IsValid)
-            {
             //find my buttonLink
             Control control = this.Master.FindControl("admin") as Control;
             // Validate the user password
             var manager = new UserManager();
-                ApplicationUser user = manager.Find(UserName.Text, Password.Text);
-                if (user != null)
-                {
-                    IdentityHelper.SignIn(manager, user, RememberMe.Checked);
-                    IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+            ApplicationUser user = manager.Find(UserName.Text, Password.Text);
+            if (user != null)
+            {
+                IdentityHelper.SignIn(manager, user, RememberMe.Checked);
+                IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
 
                 if (user.UserName.Equals("admin"))
                 {
-                  
+
 
                 }
                 else control.Visible = false;
 
             }
-            
-            
-                else
-                {
-                    FailureText.Text = "Invalid username or password.";
-                    ErrorMessage.Visible = true;
-                }
+
+
+            else
+            {
+                FailureText.Text = "Invalid username or password.";
+                ErrorMessage.Visible = true;
             }
         }
+    }
 }
